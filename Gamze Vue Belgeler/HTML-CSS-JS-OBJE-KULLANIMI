@@ -1,0 +1,58 @@
+HTML:
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+  <div @click="attachedClass=!attachedClass" :class="divClass" class="box"> </div> <!-- : v-bind 'ın kısa yolu' ilk class vue-js ile render edildikten sonra gelen class; 2. yazılan class da elementle birlikte gelen native classtır."!" işareti değili demektir.Yani değer neyse tersini al demektir. -->
+  <div class="box" :class="{yellow:attachedClass}"> </div>
+  <div class="box"> </div>
+
+
+</div>
+
+
+JS:
+
+new Vue({
+  el: "#app",
+
+  data: {
+    attachedClass: false
+  },
+  computed: {
+  divClass: function(){
+  return{
+  yellow: this.attachedClass,
+  blue: !this.attachedClass
+  }
+  }
+  }
+
+
+})
+
+
+
+CSS:
+
+.box { /* class bu şekilde oluşturuluyor css'de */
+
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color:blue;
+}
+
+
+

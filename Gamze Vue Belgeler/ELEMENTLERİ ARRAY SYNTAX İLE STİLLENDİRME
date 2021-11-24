@@ -1,0 +1,65 @@
+HTML:
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+  <div class="box" :style="{backgroundColor:color}"></div> <!-- Yalnızca renk değişti. -->
+  
+  <div class="box" :style="customStyle"></div> <!-- sadece customStyle olduğu için yalnızca yüksekliği değişti. -->
+  
+  <div class="box" :style="[customStyle, {width: yukseklik + 'px'}]"></div> <!-- array içerisinde stillendirme işlemi genişlik (width) ile yukseklik aynı şekilde değişsin ve customStyle fonksiyonu çalışsın demektir. -->
+  
+  <input type="text" v-model="color">
+   <input type="text" v-model="yukseklik">
+
+
+</div>
+
+
+JS:
+
+new Vue({
+  el: "#app",
+
+  data: {
+    color: "green",
+    yukseklik:100
+  },
+  computed: {
+    customStyle: function() {
+      return {
+       backgroundColor:this.color,
+       height:this.yukseklik+"px" //height css kodundan geliyor yukseklik de data içerisinden.
+      }
+    }
+  }
+
+
+})
+
+
+
+CSS:
+
+
+.box { /* class bu şekilde oluşturuluyor css'de */
+
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.green{
+  background-color:green;
+}
+
+
+.blue {
+  background-color:blue;
+}
+
+

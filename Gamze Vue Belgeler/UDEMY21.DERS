@@ -1,0 +1,37 @@
+HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <button v-on:click="showAlert"> Alert Göster!!</button>
+  <button v-on:click="counter++">Arttır(methodsuz)</button>
+  <button v-on:click="increaseCounter"> Arttır (fonksiyonlu) </button>
+  <p> {{ counter }} </p>
+  <p v-on:mousemove="updateCoordinates">Coordinates: {{ X }} , {{ Y }} </p> <!-- event objesini parametre olarak aldık. -->
+</div>
+
+
+
+JS:
+
+new Vue({
+  el: "#app",
+  data: {
+    counter: 0,
+    X: 0,
+    Y: 0
+  },
+  methods: {
+    showAlert: function() {
+      alert("bir dost :)");
+    },
+    increaseCounter: function() {
+      this.counter++;
+    },
+    updateCoordinates: function(event) { //event default bir parametredir. Bu fonksiyon mause taşındıkça koordinatlardaki değişimi göstermektedir. 
+      this.X = event.clientX;
+      this.Y = event.clientY;
+    }
+  }
+})
+

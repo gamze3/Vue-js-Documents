@@ -1,0 +1,57 @@
+HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="exercise">
+  <!-- 1) Butona tıklayarak <p> elementleri arasında bir Toggle İşlevi yapın. Hem v-if hem de v-show syntax'larını kullanarak bu işlemi gerçekleştiriniz. Aralarındaki farkı Öğeyi İncele diyerek bu iki syntax farkını gözlemleyiniz -->
+  <div>
+    <button @click="show=!show">Toggle</button>
+    <p v-if="show">Beni Görebiliyor musun?</p>
+    <p v-else="show">Ya da beni görebiliyor musun?</p>
+    <p v-show="show">Beni Görebiliyor musun?</p>
+    <p v-show=!show>Ya da beni görebiliyor musun?</p> <!-- v-showun v-else i yok ya 1 ya 0 prensibine göre çalışıyor. -->
+  </div>
+  <!-- 2) Array kullanarak bir <ul> listesi oluşturunuz. Liste içerisinde hem Array'deki verinin değerini hem de index numarasını her bir elementin içerisine yazdırınız. (Değer=item)  -->
+  <ul>
+    <li v-for="(item,index) in array"> {{ item }} : {{ index }} </li>
+  </ul>
+  <!-- 3) Yan taraftaki objenin tüm key ve value verilerini yazdırınız: customObject: {title: 'Game of Thrones',author: 'George R.R',books: '7'}. Ayrıca tüm elementlerin index numarasını da yazdırınız. -->
+  <ul>
+    <li v-for="(value,keyy,index) in customObject">{{ keyy }} : {{ value }} - {{ index }} </li>
+  </ul>
+  <!-- 4) Yan taraftaki objenin tüm value değerlerini yazdırınız. Ayrıca iç içe bir loop daha kurarak Array içerisindeki verileri de yazdırınız : { name: 'NesnedLoop', id: 19,data: [4.3, 2.67, 10.42, 1402] } (ipucu: v-for ve v-if Directive'lerinin beraber kullanımı bunu başarmanızı sağlayacaktır.) -->
+  <ul>
+    <li v-for="value in testData">
+    <template v-if="Array.isArray(value)"> <!-- array'e ulaşmak için bu şekilde yazdık. Eğer data içerisindeki arrayin value değeri varsa -->
+      <div v-for="item in value">{{ item }}</div> <!-- Array içerisindeki elemanları yazdırmak için kullandık. Üst tarafta array'e ulaşıp daha sonra direkt itemları istedik. -->
+    </template>
+    <template v-else>{{ value }}</template> <!-- Eğer item yoksa o elemanı da yazdırmak için bu satırı kullandık. (10 olarak verilen id yi de görebilmek için.) -->
+    
+    </li>
+  </ul>
+</div>
+
+
+
+
+JS:
+
+new Vue({
+  el: '#exercise',
+  data: {
+   show:false,
+    array: ['Gökhan', 'Defne', 'Berk', 'Özge'],
+    customObject: {
+      title: 'Game of Thrones',
+      author: 'George R.R',
+      books: '7'
+    },
+    testData: {
+      name: 'TESTOBJECT', 
+      id: 10,
+      data: [1.67, 1.33, 0.98, 2.21]
+    }
+   
+  }
+});
+

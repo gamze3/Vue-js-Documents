@@ -1,0 +1,34 @@
+HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+  <p v-if=show>Beni görebilirsin!!!</p>
+  <p v-else>Beni görebilir misin acaba?</p> <!-- v-else burası için ya üstteki görünsün yada sadece bu saır gözüksün işlemi için yani v-if in tersi durumda çalışsın dediğmiz için kullanılıyor. -->
+  <button @click="show=!show"> Göster/Gizle </button>
+  <p v-if="sayi<10">Sayı 10'dan küçüktür.</p>
+  <p v-else-if="sayi>10">Sayı 10'dan büyüktür.</p>
+  <p v-else="sayi=10">Sayı 10'a eşittir.</p>
+  <!-- "v-else-if", "v-if" koşuluna uymuyorsa; "v-else" her iki önceki koşula da uymuyorsa demek. Zaten html kodları sırayla okunduğu için sıralamaya dikkat edilerek koşul attributeları kullanılmalı.  -->
+  <hr> <!-- Ortaya bir çizgiyi bununla çektik ayırmak için. -->
+  <button @click="showparagraph=!showparagraph">Göster(2)/Gizle(2)</button>
+  <p v-show="showparagraph">Muhtar Taşğın, AA muhabirine, baraj gölünde karartı gördüğünü, yaklaştığında bunun su samuru olduğunu fark ettiğini söyledi.Su samurunun balık yerken kendisini fark etmesi üzerine suya atladığını, bir süre suda görüldükten sonra gözden kaybolduğunu dile getiren Taşğın, daha önce de bölgede 3-4 kez su samuru gördüğünü ancak yanında cep telefonu olmadığı için onları görüntüleyemediğini belirtti.</p>
+
+</div>
+
+
+
+JS:
+
+new Vue({
+  el: '#app',
+  data: {
+  
+ show: true,
+ sayi:11,
+ showparagraph:false
+
+  }
+  
+});

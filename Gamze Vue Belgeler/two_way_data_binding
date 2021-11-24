@@ -1,0 +1,28 @@
+
+
+HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <button v-on:click="counter+=2"> Buton 2 arttır! </button>
+  <p>{{ counter }}</p>
+  <input type="text" v-model="name"> <!-- inputa kullanıcının yazdığı veri her yerde aynı yazılır ekrana two way data binding v-model attribute'u ile yapılır. -->
+  <p>{{ name }}</p>
+</div>
+
+
+
+JS:
+
+new Vue({
+  el: '#app',
+  data: {
+    counter: 0,
+    name: "Gamze"
+  },
+  methods: {
+
+  }
+});
+

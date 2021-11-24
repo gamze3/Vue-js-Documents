@@ -1,0 +1,39 @@
+HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+
+  <ul>
+
+    <li v-for="(materials,index) in products"> {{ materials }} - {{ index }} </li>
+
+    <!-- "materials" kısmının ismini biz verdik sadece string interpolationdaki isimle aynı olmalı iki tarafa da aynı isim yazılmalı. "materials in product" bizim array içerisindeki elemanları tek tek gezmemize olanak sağlıyor. indexler de alınabilir yani gezilen elemanın arrayin kaçıncı sırasında olduğu bilgisi de elde edilir. -->
+  </ul>
+  
+  <div v-for="(materials,index) in products"> <!-- listeleri ekrana basmak için farklı bir yol. -->
+  <h3> {{ materials }} </h3>
+  <p> {{ index }}</p>
+  </div>
+  
+  <template v-for="(materials,index) in products"> <!-- Template elemnti vue-js tarafından render edilmez. Html yapısını bozmaz yani. -->
+  
+  <h3> {{ materials }} </h3>
+  <p> {{ index }}</p>
+    
+  </template>
+</div>
+
+
+JS:
+
+new Vue({
+  el: '#app',
+  data: {
+  products:["Monitör", "Klavye", "Askı", "Masa"]
+  
+
+  }
+  
+});

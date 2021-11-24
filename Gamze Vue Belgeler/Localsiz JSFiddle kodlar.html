@@ -1,0 +1,42 @@
+
+<! DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+
+</head>
+<body>
+
+<div id="app">
+
+<h1> {{ title }}</h1>
+<hr>
+<input type="text" v-on:input="changeTitle"> <!-- Two way data binding. --->
+<p>{{ description }}</p>
+</div>
+
+
+
+<script type="text/javascript">
+new Vue({ // Yeni bir vue olduğunu proje başlangıcı olduğunu gösterir.
+
+el: "#app",
+data: {
+    title: "Hi Vue",
+    description: "Bu açıklama kısmıdır."
+},
+methods: {
+    changeTitle: function(event){
+    this.description=event.target.value; //Data içerisindeki variablelara ulaşmak ve onlarla işlem yapmak için this. kullanılır.
+        // Event diye bir değişken tanımlayıp fonksiyon içerisinde hedef gösterdik.
+        // Açıklama kısmını two way data binding yapmak istediğimiz için description'ı çağırdık,
+        // title ya da data içerisine tanımlanmış herhangi bir şey de çağırılsbilirdi fonsiyonda işlem yapmak için.
+    }
+}
+})
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <button v-on:click="counter++"> Arttır </button>
+  <button v-on:click="counter--">Azalt</button>
+  <button v-on:click="secondCounter++">2. counter'ı arttır</button>
+  <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+  <p>{{ result() }} | {{ output }}</p>
+
+</div>
+
+
+
+JS:
+
+new Vue({
+  el: '#app',
+  data: {
+    counter: 0,
+    secondCounter: 0
+
+  },
+  methods: {
+    result: function() {
+      console.log("method çalıştı!");
+      return this.counter > 10 ? "10'dan büyüktür" : "10'dan küçüktür";
+    }
+    },
+    computed: {
+      output: function() {
+        console.log("computed çalıştı!");
+        return this.secondCounter > 10 ? "10'dan büyüktür" : "10'dan küçüktür";
+      }
+      },
+      
+      watch: {
+        counter: function(value){
+          vm = this; //vm'i biz tanımladık ssetTimeout komutu seçildiğinde counter fonksiyonundan çıkılmış oluyor tekrar oradaki veriyi çekmek için değişken tanımlamak gerekti.
+          setTimeout(function() { //setTimeout js'de kayıtlı komuttur şu kadar zaman sonra sıfırla demek için kullandık.
+              vm.counter = 0; //sıfırla dediğimiz kısım.
+
+            }, //ilk fonsiyonu kapattık baştaki fonksiyona yazdık süreyi.
+            1500) // 1,5 sn sonra demek
+        }
+      }
+    
+  
+});
+
