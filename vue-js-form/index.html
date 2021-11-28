@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Form</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>title: {{ title1 }} </h1>
+       
+        
+
+        <div class="userInput">
+
+            <label for="userName">Please Enter Your Username</label>
+
+            <input type="text" id="userName" class="formControl">
+
+        </div>
+
+        <div class="userInput">
+            <label for="passWord">Please Enter Your Password</label>
+
+            <input type="text" id="passWord" class="formControl">
+       
+
+        </div>
+
+        <button>ENTER</button>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var  app=new Vue({
+            el:"#app",
+            data:{
+                title1:"vue form"
+            }
+        })
+    </script>
+    
+</body>
+</html>
